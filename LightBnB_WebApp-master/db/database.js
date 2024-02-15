@@ -3,11 +3,14 @@ const users = require("./json/users.json");
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
+  user: 'labber',
+  password: 'labber',
   host: 'localhost',
-  database: 'bootcampx'
+  database: 'lightbnb'
 });
+
+// the following assumes that you named your connection variable `pool`
+pool.query(`SELECT title FROM properties LIMIT 10;`).then(response => { console.log(response) }).catch(err => console.error('query error', err.stack));
 
 /// Users
 
